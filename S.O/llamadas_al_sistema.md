@@ -53,3 +53,51 @@ Proceso | Tiempo de llegada | Ráfaga de CPU
 
 **Ejemplo en python:**
 >[algoritmo_planificacion_fifo.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/algoritmo_planificacion_fifo.py)
+
+
+### 2. Algoritmo de planificación basado en prioridades
+**Ejemplo:**
+Proceso | Prioridad | Ráfaga de CPU
+--|--|--
+```#1 Chrome``` | 3 | 10 
+```#2 Vs Code``` | 1 | 1 
+```#3 Excel``` | 5 | 2 
+```#4 Git``` | 4 | 1 
+```#5 Word``` | 2 | 5 
+
+**Diagrama de Grantt:**
+ ```Vs Code``` | ```Word```  | ```Chrome```  | ```Git``` |```Excel``` 
+--|--|--|--|--
+1 | 6 | 16 | 17 | 19
+
+>**Tiempo de espera =** Tiempo ejecución - tiempo llegada
+>
+>**Vs Code =** 0 - 0 = 0
+>
+>**Word =** 1 - 0 = 1
+>
+>**Chrome =** 6 - 0 = 6
+>
+>**Git =** 16 - 0 = 16
+>
+>**Excel =** 17 - 0 = 17
+>
+>**Tiempo de espera promedio =** (0+1+6+16+17) / 5 = 8 ut.
+
+>**Tiempo de respuesta =** Tiempo ráfaga + tiempo ráfaga anterior
+>
+>**Vs Code =** 1 + 0 = 1
+>
+>**Word =** 5 + 1 = 6
+>
+>**Chrome =** 10 + 6 = 16
+>
+>**Git =** 1 + 16 = 17
+>
+>**Excel =** 2 + 17 = 19
+>
+>**Tiempo de espera promedio =** (1+6+16+17+19) / 5 = 11,8 ut.
+
+**Ejemplo en python:**
+>[algoritmo_planificacion_x_prioridades.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/algoritmo_planificacion_x_prioridades.py)
+
