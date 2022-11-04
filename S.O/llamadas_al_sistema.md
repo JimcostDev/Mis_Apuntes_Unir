@@ -50,3 +50,6 @@ Proceso | Tiempo de llegada | Ráfaga de CPU
 >**Excel =** 5 + 52 = 57
 >
 >**Tiempo de espera promedio =** (10+34+46+52+57) / 5 = 39,8 ut.
+
+**Ejemplo en python:**
+>[algoritmo_planificacion_fifo.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/algoritmo_planificacion_fifo.py)
