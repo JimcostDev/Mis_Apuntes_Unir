@@ -118,7 +118,7 @@ Quantum = 5
 
 >**Tiempo de espera promedio =** (19+4+22+11+23) / 5 = 15,8 ut.
 >
->**Tiempo de espera promedio =** (29+8+30+16+35) / 5 = 23,6 ut.
+>**Tiempo de respuesta promedio =** (29+8+30+16+35) / 5 = 23,6 ut.
 
 **Ejemplo en Python:**
 >[round_robin.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/round_robin.py)
