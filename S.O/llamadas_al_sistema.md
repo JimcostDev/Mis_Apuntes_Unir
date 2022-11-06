@@ -4,7 +4,7 @@
 
 **Asignatura:** Sistemas operativos
 
-**Presentado por:** *Ronaldo Jimenéz Acosta y Leila Bulla*
+**Presentado por:** *Ronaldo Jimenéz Acosta y Leila Bula*
 
 --- 
 
@@ -51,8 +51,11 @@ Proceso | Tiempo de llegada | Ráfaga de CPU
 >
 >**Tiempo de espera promedio =** (10+34+46+52+57) / 5 = 39,8 ut.
 
-**Ejemplo en python:**
+**Ejemplo en Python:**
 >[algoritmo_planificacion_fifo.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/algoritmo_planificacion_fifo.py)
+
+**Ejemplo en Java:**
+>[Main.java](https://github.com/Leila-Bula/fcfs/blob/master/src/main/java/Main.java)
 
 
 ### 2. Algoritmo de planificación basado en prioridades
@@ -98,6 +101,6 @@ Proceso | Prioridad | Ráfaga de CPU
 >
 >**Tiempo de espera promedio =** (1+6+16+17+19) / 5 = 11,8 ut.
 
-**Ejemplo en python:**
+**Ejemplo en Python:**
 >[algoritmo_planificacion_x_prioridades.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/algoritmo_planificacion_x_prioridades.py)
 
