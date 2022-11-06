@@ -118,7 +118,7 @@ Quantum = 5
 
 **Diagrama de Grantt:**
  ```Chrome``` | ```Vs Code```  | ```Excel```  | ```Git``` |```Word``` | ```Chrome``` | ```Excel```  |```Word``` |```Word```
---|--|--|--|--
+--|--|--|--|--|--|--|--|--
 5 | 9 | 14 | 19 | 24 | 29 | 32 | 37 | 39
 
 >**Tiempo de espera promedio =** (19+5+24+14+27) / 5 = 17,8 ut.
