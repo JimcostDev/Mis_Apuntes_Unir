@@ -116,11 +116,6 @@ Proceso |  Ráfaga de CPU
 
 Quantum = 5
 
-**Diagrama de Grantt:**
- ```Chrome``` | ```Vs Code```  | ```Excel```  | ```Git``` |```Word``` | ```Chrome``` | ```Excel```  |```Word``` |```Word```
---|--|--|--|--|--|--|--|--
-5 | 9 | 14 | 19 | 24 | 29 | 32 | 37 | 39
-
 >**Tiempo de espera promedio =** (19+4+22+11+23) / 5 = 15,8 ut.
 >
 >**Tiempo de espera promedio =** (29+8+30+16+35) / 5 = 23,6 ut.
