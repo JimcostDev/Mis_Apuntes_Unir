@@ -6,6 +6,8 @@
 
 **Presentado por:** *Ronaldo Jimenéz Acosta y Leila Bula*
 
+**Fecha:** 07 de noviembre de 2022
+
 --- 
 
 ## Video:
