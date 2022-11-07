@@ -55,7 +55,7 @@ Proceso | Tiempo de llegada | Ráfaga de CPU
 >[algoritmo_planificacion_fifo.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/algoritmo_planificacion_fifo.py)
 
 **Ejemplo en Java:**
->[Main.java](https://github.com/Leila-Bula/fcfs/blob/master/src/main/java/Main.java)
+>[Main.java](https://github.com/Leila-Bula/algoritmo-planificacion-fcfs/blob/master/src/main/java/Main.java)
 
 
 ### 2. Algoritmo de planificación basado en prioridades
