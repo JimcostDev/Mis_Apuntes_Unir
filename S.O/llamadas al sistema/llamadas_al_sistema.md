@@ -56,6 +56,8 @@ Proceso | Tiempo de llegada | Ráfaga de CPU
 
 **Ejemplo en Java:**
 >[Main.java](https://github.com/Leila-Bula/algoritmo-planificacion-fcfs/blob/master/src/main/java/Main.java)
+>
+>[resultados.pdf](https://github.com/JimcostDev/Mis_Apuntes_Unir/blob/master/S.O/llamadas%20al%20sistema/fcfs.pdf)
 
 
 ### 2. Algoritmo de planificación basado en prioridades
