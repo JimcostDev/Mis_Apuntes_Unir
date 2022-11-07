@@ -10,6 +10,7 @@
 ---
 # Video:
 ![llamadas_al_sistema.mp4]()
+![mini](https://user-images.githubusercontent.com/53100460/200416267-51af7a9d-6de4-44a8-93ef-9956c0932086.jpg)
 ---
 
 ### 1. Algoritmo de planificación FIFO (First In First Out)
