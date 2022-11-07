@@ -133,9 +133,8 @@ Quantum = 5
 
 **Ejemplo en Python:**
 >[round_robin.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/round_robin.py)
-
-**Vídeo de explicación:¨**
->[round_robin.mp4](https://youtu.be/xVzgQukMcVE)
+>
+>[video_explicacion.mp4](https://youtu.be/xVzgQukMcVE)
 
 ## Referencias:
 >[MasterHeHeGar](https://www.youtube.com/user/MasterHeHeGar)
