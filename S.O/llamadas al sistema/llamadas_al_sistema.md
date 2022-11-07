@@ -7,6 +7,10 @@
 **Presentado por:** *Ronaldo Jimenéz Acosta y Leila Bula*
 
 --- 
+---
+# Video:
+![llamadas_al_sistema.mp4]()
+---
 
 ### 1. Algoritmo de planificación FIFO (First In First Out)
 **Ejemplo:**
