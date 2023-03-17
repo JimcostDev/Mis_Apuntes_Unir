@@ -10,7 +10,7 @@
 
 --- 
 
-## Video:
+## Vídeo:
 > [llamadas_al_sistema.mp4](https://youtu.be/QlMv7Pj1pk8)
 > 
 ![mini](https://user-images.githubusercontent.com/53100460/200416267-51af7a9d-6de4-44a8-93ef-9956c0932086.jpg)
@@ -133,6 +133,8 @@ Quantum = 5
 
 **Ejemplo en Python:**
 >[round_robin.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/round_robin.py)
+>
+>[video_explicacion.mp4](https://youtu.be/xVzgQukMcVE)
 
 ## Referencias:
 >[MasterHeHeGar](https://www.youtube.com/user/MasterHeHeGar)
