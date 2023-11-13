@@ -1,4 +1,4 @@
-# Documentación Técnica del Código
+# Puzle de las losetas:
 
 ## Clase `Puzzle`
 
