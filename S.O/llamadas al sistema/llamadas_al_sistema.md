@@ -5,9 +5,6 @@
 **Asignatura:** Sistemas operativos
 
 **Presentado por:** *Ronaldo Jimenéz Acosta y Leila Bula*
-
-**Fecha:** 07 de noviembre de 2022
-
 --- 
 
 ## Vídeo:
@@ -61,7 +58,7 @@ Proceso | Tiempo de llegada | Ráfaga de CPU
 >**Tiempo de espera promedio =** (10+34+46+52+57) / 5 = 39,8 ut.
 
 **Ejemplo en Python:**
->[algoritmo_planificacion_fifo.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/algoritmo_planificacion_fifo.py)
+>[algoritmo_planificacion_fifo.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/ejercicios/algoritmo_planificacion_fifo.py)
 
 **Ejemplo en Java:**
 >[Main.java](https://github.com/Leila-Bula/algoritmo-planificacion-fcfs/blob/master/src/main/java/Main.java)
@@ -113,7 +110,7 @@ Proceso | Prioridad | Ráfaga de CPU
 >**Tiempo de espera promedio =** (1+6+16+17+19) / 5 = 11,8 ut.
 
 **Ejemplo en Python:**
->[algoritmo_planificacion_x_prioridades.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/algoritmo_planificacion_x_prioridades.py)
+>[algoritmo_planificacion_x_prioridades.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/ejercicios/algoritmo_planificacion_x_prioridades.py)
 
 ### 3. Algoritmo de planificación Round Robin
 **Ejemplo:**
@@ -132,7 +129,7 @@ Quantum = 5
 >**Tiempo de respuesta promedio =** (29+8+30+16+35) / 5 = 23,6 ut.
 
 **Ejemplo en Python:**
->[round_robin.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/round_robin.py)
+>[round_robin.py](https://github.com/JimcostDev/Python_Ejercicios/blob/master/ejercicios/round_robin.py)
 >
 >[video_explicacion.mp4](https://youtu.be/xVzgQukMcVE)
 
