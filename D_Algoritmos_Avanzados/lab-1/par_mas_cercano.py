@@ -3,17 +3,6 @@ Autor: Ronaldo Jiménez Acosta
 Sitio web: www.jimcostdev.com
 Materia: Diseño Avanzado de Algoritmos
 Fecha de entrega: 30 de octubre de 2023
-
-Flujo del Programa:
-1. Se lee un archivo de texto ("datos_xxx.txt") que contiene las coordenadas de los puntos en un formato específico, donde "xxx" se refiere a la cantidad de puntos (por ejemplo, datos_1000.txt).
-2. Los puntos se almacenan en una lista llamada "puntos".
-3. La función 'obtener_par_mas_cercano' se llama con la lista de puntos como argumento.
-4. La función divide recursivamente la lista de puntos en mitades y encuentra el par más cercano en cada mitad.
-5. Luego, compara la distancia mínima entre los pares de la izquierda y la derecha y el par más cercano en la franja central.
-6. Devuelve el par de puntos más cercano encontrado y la distancia mínima entre ellos.
-7. La función 'visualizar_puntos' se llama para mostrar los puntos en un gráfico de dispersión.
-8. El programa permite al usuario seleccionar otro archivo para repetir el proceso o salir.
-9. Se imprimen los resultados en la consola, incluyendo los pares de puntos más cercanos y el tiempo de ejecución.
 """
 
 import math
@@ -67,7 +56,6 @@ def obtener_par_mas_cercano(puntos):
 
     # Comprobar si hay un par más cercano a la línea de división (franja)
     x_mitad = puntos[mitad][0]
-    # Crear una lista "franja" con puntos que están dentro de una banda de ancho "mejor_distancia" alrededor de la línea de división.
     franja = [punto for punto in puntos if abs(punto[0] - x_mitad) < mejor_distancia]
     # Ordenar la lista "franja" por la coordenada y para facilitar la búsqueda.
     franja.sort(key=lambda punto: punto[1])
