@@ -16,20 +16,30 @@ Flujo del Programa:
 9. Se imprimen los resultados en la consola, incluyendo los pares de puntos más cercanos y el tiempo de ejecución.
 """
 
-
 import math
 import time
 import matplotlib.pyplot as plt
 
-# función que halla la distacia euclidiana
+
 def distancia_euclidiana(punto1, punto2):
+    """
+    Halla la distancia euclidiana entre dos puntos en un plano cartesiano.
+    :param punto1: Tupla con las coordenadas (x, y) del primer punto.
+    :param punto2: Tupla con las coordenadas (x, y) del segundo punto.
+    :return: La distancia euclidiana entre los dos puntos.
+    """
     x1, y1 = punto1
     x2, y2 = punto2
     # distancia euclidiana entre dos puntos en un plano cartesiano. 
     return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2) 
 
-# función que halla el par mas cecano
+
 def obtener_par_mas_cercano(puntos):
+    """
+    Halla el par de puntos más cercano en una lista de puntos utilizando el algoritmo de Divide y Vencerás.
+    :param puntos: Lista de puntos en un plano cartesiano.
+    :return: Una tupla con el par de puntos más cercano y la distancia mínima entre ellos.
+    """
     n = len(puntos)
 
     # caso base de la recursión.
@@ -74,8 +84,13 @@ def obtener_par_mas_cercano(puntos):
             j += 1
     return mejor_par, mejor_distancia
 
-# función para leer los datos
+
 def leer_archivo(archivo):
+    """
+    Lee un archivo de texto que contiene las coordenadas de los puntos en un formato específico.
+    :param archivo: Nombre del archivo de texto que contiene las coordenadas de los puntos.
+    :return: Una lista de tuplas con las coordenadas de los puntos.
+    """
     puntos = []
     with open(archivo, 'r') as file:
         lineas = file.read().split('\n')
@@ -88,8 +103,13 @@ def leer_archivo(archivo):
                     puntos.append((x, y))
     return puntos
 
-# función para visualizar los puntos
+
 def visualizar_puntos(puntos):
+    """
+    Visualiza los puntos en un gráfico de dispersión.
+    :param puntos: Lista de puntos en un plano cartesiano.
+    :return: Un gráfico de dispersión que muestra los puntos.
+    """
     x, y = zip(*puntos)
     plt.scatter(x, y, label="Puntos")
     plt.xlabel("Coordenada X")
@@ -97,8 +117,10 @@ def visualizar_puntos(puntos):
     plt.legend()
     plt.show()
 
-# la función principal o de ejecución 
 def main():
+    """
+    Función principal del programa que permite al usuario seleccionar un archivo de texto y muestra el par de puntos más cercano.
+    """
     while True:
         print("Selecciona el archivo que deseas leer:")
         print("1. datos_100")

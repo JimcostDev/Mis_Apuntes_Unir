@@ -41,8 +41,15 @@ Este código Python resuelve el problema del par de puntos más cercano utilizan
 1. Asegúrate de tener un archivo de texto llamado "puntos.txt" con las coordenadas de los puntos en el mismo directorio que el script.
 2. Ejecuta el script en un entorno de Python 3.x.
 
+### Dependencias
+```python
+pip install matplotlib
+pip install pylint
+```
+
 ## Ejemplo de Resultado
 
 ```markdown
 El par de puntos más cercano es: [(x1, y1), (x2, y2)]
 La distancia mínima es: distancia
+```
