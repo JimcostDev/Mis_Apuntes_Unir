@@ -1,0 +1,1 @@
+λ+a+(c+b)(b+c)*+(aa+(c+b)(b+c)*a)(a+c(b+c)*a)*(λ+c(b+c)*)+(ab+(aa+(c+b)(b+c)*a)(a+c(b+c)*a)*b)((a+(b+c)(b+c)*a)(a+c(b+c)*a)*b)*((b+c)(b+c)*+(a+(b+c)(b+c)*a)(a+c(b+c)*a)*(λ+c(b+c)*))
