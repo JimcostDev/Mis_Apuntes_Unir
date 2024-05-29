@@ -1,6 +1,6 @@
 ## Puzle de las losetas
 
-Este proyecto resuelve el puzle de las losetas utilizando el algoritmo A*. El puzle de las losetas es un juego en el que se tienen 15 losetas numeradas y un espacio vacío en una cuadrícula de 4x4. El objetivo es reorganizar las losetas desde una configuración inicial hasta una configuración objetivo.
+Este proyecto resuelve el puzle de las losetas utilizando el algoritmo A*. El puzle de las losetas es un juego en el que se tienen n losetas numeradas y un espacio vacío en una cuadrícula de nxn. El objetivo es reorganizar las losetas desde una configuración inicial hasta una configuración objetivo.
 
 ## Descripción del Código
 
@@ -10,12 +10,13 @@ La clase `Puzzle` representa una instancia del puzle de las losetas. Cada instan
 
 #### Métodos:
 
-- **`__init__(self, estado, objetivo, pasos=None, costo=0)`**: Inicializa una instancia de la clase `Puzzle`.
+- **`__init__(self, estado, objetivo, pasos=None, costo=0, tamano=4)`**: Inicializa una instancia de la clase `Puzzle`.
   - **Parámetros:**
     - `estado` (list): Lista que representa la configuración actual del puzle.
     - `objetivo` (list): Lista que representa la configuración objetivo del puzle.
     - `pasos` (list, optional): Lista de estados alcanzados hasta el momento. Por defecto es None.
     - `costo` (int, optional): Valor que representa el costo acumulado para llegar al estado actual. Por defecto es 0.
+    - `tamano` (int): Tamaño del lado del puzzle (n x n).
 
 - **`es_objetivo(self)`**: Verifica si el estado actual es igual al estado objetivo.
   - **Retorno:** `True` si el estado actual es el objetivo, `False` de lo contrario.
@@ -34,23 +35,59 @@ La clase `Puzzle` representa una instancia del puzle de las losetas. Cada instan
     - `other`: Otra instancia de la clase `Puzzle`.
   - **Retorno:** `True` si el costo total de la instancia actual es menor que el de `other`, `False` de lo contrario.
 
-### Función `es_alcanzable(estado_inicial, estado_objetivo)`
+### Función `contar_inversiones(lista)`
 
-Esta función verifica si la configuración objetivo es alcanzable desde la configuración inicial basándose en la paridad de las inversiones.
+Esta función cuenta el número de inversiones en una lista de números, excluyendo el 0.
+
+- **Parámetros:**
+  - `lista` (list): Lista de números para contar las inversiones.
+- **Retorno:**
+  - `int`: El número de inversiones.
+
+### Función `es_alcanzable(estado_inicial, estado_objetivo, tamano)`
+
+Esta función verifica si la configuración objetivo es alcanzable desde la configuración inicial basándose en la paridad de las inversiones y la posición del espacio vacío.
 
 - **Parámetros:**
   - `estado_inicial` (list): Lista que representa la configuración inicial del puzle.
   - `estado_objetivo` (list): Lista que representa la configuración objetivo del puzle.
-- **Retorno:** `True` si la configuración objetivo es alcanzable, `False` de lo contrario.
+  - `tamano` (int): Tamaño del lado del puzzle (n x n).
+- **Retorno:** 
+  - `bool`: `True` si la configuración objetivo es alcanzable, `False` de lo contrario.
+  - `str`: Razón detallada si la configuración no es alcanzable.
 
-### Función `resolver_puzzle(estado_inicial, estado_objetivo)`
+### Función `resolver_puzzle(estado_inicial, estado_objetivo, tamano)`
 
 Esta función resuelve el puzle de las losetas utilizando el algoritmo A*.
 
 - **Parámetros:**
   - `estado_inicial` (list): Lista que representa la configuración inicial del puzle.
   - `estado_objetivo` (list): Lista que representa la configuración objetivo del puzle.
+  - `tamano` (int): Tamaño del lado del puzzle (n x n).
 - **Retorno:** Un mensaje indicando si se encontró o no una solución, junto con los pasos y el tiempo de ejecución.
+
+### Función `obtener_entrada_usuario()`
+
+Esta función obtiene el tamaño del puzzle y los estados inicial y objetivo del usuario.
+
+- **Retorno:**
+  - `tuple`: Tamaño del puzzle, estado inicial y estado objetivo.
+
+
+---
+
+### Explicación Detallada de las Respuestas
+
+#### Configuración No Alcanzable
+
+Si la configuración objetivo no es alcanzable, se proporciona una explicación detallada de la razón:
+
+- **Paridad de Inversiones (puzzles de tamaño impar):** El número de inversiones en el estado inicial y el estado objetivo deben tener la misma paridad (ambos pares o ambos impares).
+- **Suma de Inversiones y Posición del Espacio Vacío (puzzles de tamaño par):** La suma del número de inversiones y la fila del espacio vacío (contando desde 0) debe tener la misma paridad en ambos estados (inicial y objetivo).
+
+#### No se Encontró Solución
+
+Si no se encuentra una solución, aunque el estado objetivo es alcanzable, el mensaje indicará que el algoritmo no logró encontrar la secuencia de movimientos necesaria. Esto puede deberse a limitaciones en el tiempo de ejecución o en la memoria disponibles para explorar todos los posibles estados.
 
 ## Conceptos Técnicos
 
@@ -66,15 +103,187 @@ El **algoritmo A*** es un algoritmo de búsqueda y de camino óptimo que utiliza
 
 La **paridad de inversiones** es una propiedad que determina si una configuración del puzle es alcanzable desde otra. Una inversión es cuando una loseta precede a otra loseta de menor número en la secuencia del puzle (excluyendo el espacio vacío). La paridad de inversiones debe ser la misma tanto en el estado inicial como en el objetivo para que la configuración objetivo sea alcanzable.
 
-## Ejemplo de uso
 
-A continuación se muestra un ejemplo de cómo utilizar el código para resolver el puzle:
+---
 
-```python
-if __name__ == "__main__":
-    ESTADO_INICIAL = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0]
-    ESTADO_OBJETIVO = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+## Explicación detallada cuando hay o no solución:
 
-    RESULTADO = resolver_puzzle(ESTADO_INICIAL, ESTADO_OBJETIVO)
-    print(RESULTADO)
+Vamos a analizar manualmente si el estado objetivo es alcanzable y, de ser así, si se puede resolver el puzzle utilizando la heurística A*.
+
+Para:  
+estado inicial = [1, 0, 2, 3]  
+estado objetivo = [0, 1, 2, 3]  
+
+## Análisis de Alcanzabilidad
+
+Primero, contaremos las inversiones en los estados inicial y objetivo. Una inversión ocurre cuando un número mayor precede a un número menor en la secuencia, ignorando el 0.
+
+### Estado Inicial: [1, 0, 2, 3]
+
+1 precede a 0 (ignoramos 0).  
+1 precede a 2 (no es una inversión).  
+1 precede a 3 (no es una inversión).  
+2 precede a 3 (no es una inversión).  
+
+**Inversiones en el estado inicial: 0.**
+
+### Estado Objetivo: [0, 1, 2, 3]
+
+0 precede a 1 (ignoramos 0).  
+1 precede a 2 (no es una inversión).  
+1 precede a 3 (no es una inversión).  
+2 precede a 3 (no es una inversión).  
+
+**Inversiones en el estado objetivo: 0.**
+
+## Posición del Espacio Vacío
+
+En puzzles de tamaño par (2x2), debemos considerar la posición del espacio vacío:
+
+- En el estado inicial, el espacio vacío (0) está en la fila 0 (índice 0).
+- En el estado objetivo, el espacio vacío (0) está en la fila 0 (índice 0).
+
+Para que un estado sea alcanzable en un puzzle 2x2, la paridad (suma de inversiones y la fila del espacio vacío) debe coincidir entre los estados inicial y objetivo.
+
+### Estado Inicial:
+
+- Inversiones: 0
+- Fila del espacio vacío: 0
+- Paridad: 0 + 0 = 0 (par)
+
+### Estado Objetivo:
+
+- Inversiones: 0
+- Fila del espacio vacío: 0
+- Paridad: 0 + 0 = 0 (par)
+
+## Resultado de la Alcanzabilidad
+
+Las paridades coinciden (ambas son pares), por lo tanto, el estado objetivo es alcanzable desde el estado inicial.
+
+## Resolviendo el Puzzle con A*
+
+Ahora vamos a aplicar el algoritmo A* para resolver el puzzle.
+
+### Estado Inicial: [1, 0, 2, 3]
+
+Generamos los hijos:
+
+- Mover el espacio vacío (0) hacia la derecha:  
+  Nuevo estado: [1, 2, 0, 3] (no válido porque no se generará debido a las reglas).
+
+- Mover el espacio vacío (0) hacia abajo:  
+  Nuevo estado: [1, 2, 3, 0] (no válido porque no se generará debido a las reglas).
+
+### Estado Objetivo: [0, 1, 2, 3]
+
+Generamos los hijos:
+
+- Mover el espacio vacío (0) hacia la izquierda:  
+  Nuevo estado: [1, 0, 2, 3] (lo que ya tenemos).
+
+El proceso continúa hasta que se llega al estado objetivo.
+
+## Ejecución del Algoritmo
+
+Vamos a realizar los movimientos necesarios para resolver el puzzle:
+
+### Estado Inicial: [1, 0, 2, 3]
+
+Mover el espacio vacío a la derecha:  
+Nuevo estado: [0, 1, 2, 3] (Estado Objetivo).
+
+Esto nos da la solución en un solo paso.
+
+## Respuesta Final
+
+El estado objetivo es alcanzable y la solución se encuentra en 1 paso adicional, moviendo el 0 hacia la derecha para obtener [0, 1, 2, 3].
+
+---
+
+Para:  
+estado inicial = [1, 2, 3, 0]  
+estado objetivo = [0, 1, 2, 3]  
+
+---
+
+Vamos a analizar manualmente si el estado objetivo es alcanzable y, de ser así, cómo resolver el puzzle utilizando la heurística A* para el estado inicial [1, 2, 3, 0] y el estado objetivo [0, 1, 2, 3].
+
+## Análisis de Alcanzabilidad
+
+Primero, contemos las inversiones en los estados inicial y objetivo. Una inversión ocurre cuando un número mayor precede a un número menor en la secuencia, ignorando el 0.
+
+### Estado Inicial: [1, 2, 3, 0]
+
+1 precede a 2 (no es una inversión).  
+1 precede a 3 (no es una inversión).  
+2 precede a 3 (no es una inversión).  
+
+**Inversiones en el estado inicial: 0.**
+
+### Estado Objetivo: [0, 1, 2, 3]
+
+0 precede a 1 (ignoramos 0).  
+1 precede a 2 (no es una inversión).  
+1 precede a 3 (no es una inversión).  
+2 precede a 3 (no es una inversión).  
+
+**Inversiones en el estado objetivo: 0.**
+
+## Posición del Espacio Vacío
+
+En puzzles de tamaño par (2x2), debemos considerar la posición del espacio vacío:
+
+- En el estado inicial, el espacio vacío (0) está en la fila 1 (índice 3).
+- En el estado objetivo, el espacio vacío (0) está en la fila 0 (índice 0).
+
+Para que un estado sea alcanzable en un puzzle 2x2, la paridad (suma de inversiones y la fila del espacio vacío) debe coincidir entre los estados inicial y objetivo.
+
+### Estado Inicial:
+
+- Inversiones: 0
+- Fila del espacio vacío: 1
+- Paridad: 0 + 1 = 1 (impar)
+
+### Estado Objetivo:
+
+- Inversiones: 0
+- Fila del espacio vacío: 0
+- Paridad: 0 + 0 = 0 (par)
+
+## Resultado de la Alcanzabilidad
+
+Las paridades no coinciden (una es impar y la otra es par), por lo tanto, el estado objetivo no es alcanzable desde el estado inicial.
+
+## Respuesta Final
+
+Dado que las paridades no coinciden, el estado objetivo no es alcanzable desde el estado inicial.
+
+---
+
+## Ejecución del Programa
+
+Para ejecutar el programa, sigue estos pasos:
+
+1. Asegúrate de tener Python instalado en tu sistema.
+2. Guarda el código en un archivo llamado `puzzle.py`.
+3. Ejecuta el archivo desde la línea de comandos:
+
+    ```sh
+    python puzzle.py
+    ```
+
+4. Sigue las instrucciones en la terminal para ingresar el tamaño del puzle, el estado inicial y el estado objetivo.
+
+## Ejemplo de Uso
+
+Supongamos que tienes un puzle de 3x3. Cuando ejecutes el programa, se te pedirá que ingreses el tamaño del puzle, el estado inicial y el estado objetivo. Un ejemplo de entrada y salida es el siguiente:
+
+```sh
+Ingrese el tamaño del lado del puzzle (por ejemplo, 3 para un puzzle de 3x3): 3
+Ingrese el estado inicial del puzzle (9 números, separados por espacios, con 0 representando el espacio vacío):
+1 2 3 4 5 6 7 0 8
+Ingrese el estado objetivo del puzzle (9 números, separados por espacios, con 0 representando el espacio vacío):
+1 2 3 4 5 6 7 8 0
+
 ```
