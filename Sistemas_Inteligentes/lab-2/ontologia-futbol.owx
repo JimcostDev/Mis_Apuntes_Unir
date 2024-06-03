@@ -1,0 +1,398 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/futbol/ontologies/2024/5/futbol"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/jimcostdev/ontologies/2024/5/ontologia-futbol">
+    <Prefix name="" IRI="http://www.semanticweb.org/jimcostdev/ontologies/2024/5/ontologia-futbol#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+
+    <!-- Declaraciones de clases -->
+    <Declaration>
+        <Class IRI="#Torneo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Equipo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Partido"/>
+    </Declaration>
+
+    <!-- Declaraciones de propiedades de objeto -->
+    <Declaration>
+        <ObjectProperty IRI="#participa_en"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#tiene_partido"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#equipo_local"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#equipo_visitante"/>
+    </Declaration>
+
+    <!-- Declaraciones de propiedades de datos -->
+    <Declaration>
+        <DataProperty IRI="#nombre"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#fecha"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#resultado"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#ciudad"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#fundacion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#capacidad"/>
+    </Declaration>
+
+    <!-- Definición de las propiedades de objeto -->
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#participa_en"/>
+        <Class IRI="#Equipo"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#participa_en"/>
+        <Class IRI="#Torneo"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#tiene_partido"/>
+        <Class IRI="#Torneo"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#tiene_partido"/>
+        <Class IRI="#Partido"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#equipo_local"/>
+        <Class IRI="#Partido"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#equipo_local"/>
+        <Class IRI="#Equipo"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#equipo_visitante"/>
+        <Class IRI="#Partido"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#equipo_visitante"/>
+        <Class IRI="#Equipo"/>
+    </ObjectPropertyRange>
+
+    <!-- Definición de las propiedades de datos -->
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombre"/>
+        <Class IRI="#Torneo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombre"/>
+        <Class IRI="#Equipo"/>
+    </DataPropertyDomain>
+
+    <DataPropertyDomain>
+        <DataProperty IRI="#fecha"/>
+        <Class IRI="#Partido"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#resultado"/>
+        <Class IRI="#Partido"/>
+    </DataPropertyDomain>
+
+    <DataPropertyDomain>
+        <DataProperty IRI="#ciudad"/>
+        <Class IRI="#Equipo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#fundacion"/>
+        <Class IRI="#Equipo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#capacidad"/>
+        <Class IRI="#Equipo"/>
+    </DataPropertyDomain>
+
+    <DataPropertyRange>
+        <DataProperty IRI="#nombre"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#fecha"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#resultado"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#ciudad"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#fundacion"/>
+        <Datatype abbreviatedIRI="xsd:gYear"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#capacidad"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+
+    <!-- Declaraciones de individuos -->
+    <Declaration>
+        <NamedIndividual IRI="#PremierLeague"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ManchesterUnited"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Chelsea"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Arsenal"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Liverpool"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Partido1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Partido2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Partido3"/>
+    </Declaration>
+
+    <!-- Aserciones de clase -->
+    <ClassAssertion>
+        <Class IRI="#Torneo"/>
+        <NamedIndividual IRI="#PremierLeague"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Equipo"/>
+        <NamedIndividual IRI="#ManchesterUnited"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Equipo"/>
+        <NamedIndividual IRI="#Chelsea"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Equipo"/>
+        <NamedIndividual IRI="#Arsenal"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Equipo"/>
+        <NamedIndividual IRI="#Liverpool"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Partido"/>
+        <NamedIndividual IRI="#Partido1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Partido"/>
+        <NamedIndividual IRI="#Partido2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Partido"/>
+        <NamedIndividual IRI="#Partido3"/>
+    </ClassAssertion>
+
+    <!-- Aserciones de propiedades de objeto -->
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#participa_en"/>
+        <NamedIndividual IRI="#ManchesterUnited"/>
+        <NamedIndividual IRI="#PremierLeague"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#participa_en"/>
+        <NamedIndividual IRI="#Chelsea"/>
+        <NamedIndividual IRI="#PremierLeague"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#participa_en"/>
+        <NamedIndividual IRI="#Arsenal"/>
+        <NamedIndividual IRI="#PremierLeague"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#participa_en"/>
+        <NamedIndividual IRI="#Liverpool"/>
+        <NamedIndividual IRI="#PremierLeague"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tiene_partido"/>
+        <NamedIndividual IRI="#PremierLeague"/>
+        <NamedIndividual IRI="#Partido1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tiene_partido"/>
+        <NamedIndividual IRI="#PremierLeague"/>
+        <NamedIndividual IRI="#Partido2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tiene_partido"/>
+        <NamedIndividual IRI="#PremierLeague"/>
+        <NamedIndividual IRI="#Partido3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#equipo_local"/>
+        <NamedIndividual IRI="#Partido1"/>
+        <NamedIndividual IRI="#ManchesterUnited"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#equipo_visitante"/>
+        <NamedIndividual IRI="#Partido1"/>
+        <NamedIndividual IRI="#Chelsea"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#equipo_local"/>
+        <NamedIndividual IRI="#Partido2"/>
+        <NamedIndividual IRI="#Arsenal"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#equipo_visitante"/>
+        <NamedIndividual IRI="#Partido2"/>
+        <NamedIndividual IRI="#Liverpool"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#equipo_local"/>
+        <NamedIndividual IRI="#Partido3"/>
+        <NamedIndividual IRI="#Liverpool"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#equipo_visitante"/>
+        <NamedIndividual IRI="#Partido3"/>
+        <NamedIndividual IRI="#ManchesterUnited"/>
+    </ObjectPropertyAssertion>
+
+    <!-- Aserciones de propiedades de datos -->
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombre"/>
+        <NamedIndividual IRI="#PremierLeague"/>
+        <Literal>Premier League</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombre"/>
+        <NamedIndividual IRI="#ManchesterUnited"/>
+        <Literal>Manchester United</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombre"/>
+        <NamedIndividual IRI="#Chelsea"/>
+        <Literal>Chelsea</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombre"/>
+        <NamedIndividual IRI="#Arsenal"/>
+        <Literal>Arsenal</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombre"/>
+        <NamedIndividual IRI="#Liverpool"/>
+        <Literal>Liverpool</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fecha"/>
+        <NamedIndividual IRI="#Partido1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-20T15:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#resultado"/>
+        <NamedIndividual IRI="#Partido1"/>
+        <Literal>2-1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fecha"/>
+        <NamedIndividual IRI="#Partido2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-21T18:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#resultado"/>
+        <NamedIndividual IRI="#Partido2"/>
+        <Literal>0-0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fecha"/>
+        <NamedIndividual IRI="#Partido3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-22T20:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#resultado"/>
+        <NamedIndividual IRI="#Partido3"/>
+        <Literal>1-3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#ciudad"/>
+        <NamedIndividual IRI="#ManchesterUnited"/>
+        <Literal>Manchester</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fundacion"/>
+        <NamedIndividual IRI="#ManchesterUnited"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#gYear">1878</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#capacidad"/>
+        <NamedIndividual IRI="#ManchesterUnited"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">74879</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#ciudad"/>
+        <NamedIndividual IRI="#Chelsea"/>
+        <Literal>Londres</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fundacion"/>
+        <NamedIndividual IRI="#Chelsea"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#gYear">1905</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#capacidad"/>
+        <NamedIndividual IRI="#Chelsea"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">41837</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#ciudad"/>
+        <NamedIndividual IRI="#Arsenal"/>
+        <Literal>Londres</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fundacion"/>
+        <NamedIndividual IRI="#Arsenal"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#gYear">1886</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#capacidad"/>
+        <NamedIndividual IRI="#Arsenal"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">60260</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#ciudad"/>
+        <NamedIndividual IRI="#Liverpool"/>
+        <Literal>Liverpool</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fundacion"/>
+        <NamedIndividual IRI="#Liverpool"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#gYear">1892</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#capacidad"/>
+        <NamedIndividual IRI="#Liverpool"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">53394</Literal>
+    </DataPropertyAssertion>
+</Ontology>
