@@ -1,7 +1,8 @@
 # Ontología de Fútbol
 
 **Autor**: Ronaldo Jiménez
-**Web**: jimcostdev.com
+
+**Web**: [jimcostdev.com](https://www.jimcostdev.com/)
 
 ## Descripción
 
@@ -59,31 +60,4 @@ Esta ontología de fútbol está diseñada para representar información sobre t
 - **Partido2 equipo_visitante Liverpool**
 - **Partido3 equipo_local Liverpool**
 - **Partido3 equipo_visitante ManchesterUnited**
-
-### Propiedades de Datos
-
-- **PremierLeague nombre "Premier League"**
-- **ManchesterUnited nombre "Manchester United"**
-- **Chelsea nombre "Chelsea"**
-- **Arsenal nombre "Arsenal"**
-- **Liverpool nombre "Liverpool"**
-- **Partido1 fecha "2024-05-20T15:00:00"**
-- **Partido1 resultado "2-1"**
-- **Partido2 fecha "2024-05-21T18:00:00"**
-- **Partido2 resultado "0-0"**
-- **Partido3 fecha "2024-05-22T20:00:00"**
-- **Partido3 resultado "1-3"**
-- **ManchesterUnited ciudad "Manchester"**
-- **ManchesterUnited fundacion "1878"**
-- **ManchesterUnited capacidad 74879**
-- **Chelsea ciudad "Londres"**
-- **Chelsea fundacion "1905"**
-- **Chelsea capacidad 41837**
-- **Arsenal ciudad "Londres"**
-- **Arsenal fundacion "1886"**
-- **Arsenal capacidad 60260**
-- **Liverpool ciudad "Liverpool"**
-- **Liverpool fundacion "1892"**
-- **Liverpool capacidad 53394**
-
 
