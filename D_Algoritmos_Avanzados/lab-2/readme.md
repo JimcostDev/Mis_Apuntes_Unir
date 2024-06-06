@@ -105,159 +105,37 @@ La **paridad de inversiones** es una propiedad que determina si una configuraci�
 
 
 ---
+## Explicación de Soluciones en Puzzles de Deslizamiento
 
-## Explicación detallada cuando hay o no solución:
+### Alcanzabilidad de Estados
 
-Vamos a analizar manualmente si el estado objetivo es alcanzable y, de ser así, si se puede resolver el puzzle utilizando la heurística A*.
+Para determinar si un estado objetivo es alcanzable desde un estado inicial en puzzles de deslizamiento, se deben considerar las inversiones y la posición del espacio vacío. Esto es crucial para puzzles 3x3 y 4x4, mientras que para el 2x2, la simplicidad del puzzle reduce la complejidad de este análisis.
 
-Para:  
-estado inicial = [1, 0, 2, 3]  
-estado objetivo = [0, 1, 2, 3]  
+#### Puzzles 2x2
 
-## Análisis de Alcanzabilidad
+En los puzzles 2x2, la resolución es más directa y no siempre requiere un análisis de inversiones debido a la menor cantidad de piezas y movimientos.
 
-Primero, contaremos las inversiones en los estados inicial y objetivo. Una inversión ocurre cuando un número mayor precede a un número menor en la secuencia, ignorando el 0.
+- **Ejemplo**:
+  - Estado inicial: [1, 0, 2, 3]
+  - Estado objetivo: [0, 1, 2, 3]
+  - Resultado: Solucionable en 1 paso.
 
-### Estado Inicial: [1, 0, 2, 3]
+#### Puzzles 3x3 y 4x4
 
-1 precede a 0 (ignoramos 0).  
-1 precede a 2 (no es una inversión).  
-1 precede a 3 (no es una inversión).  
-2 precede a 3 (no es una inversión).  
+Para estos tamaños, el análisis de inversiones y la posición del espacio vacío son críticos.
 
-**Inversiones en el estado inicial: 0.**
+- **3x3**:
+  - Un puzzle es solucionable si el número de inversiones es par.
 
-### Estado Objetivo: [0, 1, 2, 3]
+- **4x4**:
+  - Un puzzle es solucionable si el número de inversiones es par y el espacio vacío está en una fila impar desde abajo, o si el número de inversiones es impar y el espacio vacío está en una fila par desde abajo.
 
-0 precede a 1 (ignoramos 0).  
-1 precede a 2 (no es una inversión).  
-1 precede a 3 (no es una inversión).  
-2 precede a 3 (no es una inversión).  
+### Resolución con Algoritmo A*
 
-**Inversiones en el estado objetivo: 0.**
+El algoritmo A* es eficaz para puzzles 3x3 y 4x4, garantizando encontrar la solución óptima cuando se usa una heurística adecuada, como la distancia de Manhattan.
 
-## Posición del Espacio Vacío
-
-En puzzles de tamaño par (2x2), debemos considerar la posición del espacio vacío:
-
-- En el estado inicial, el espacio vacío (0) está en la fila 0 (índice 0).
-- En el estado objetivo, el espacio vacío (0) está en la fila 0 (índice 0).
-
-Para que un estado sea alcanzable en un puzzle 2x2, la paridad (suma de inversiones y la fila del espacio vacío) debe coincidir entre los estados inicial y objetivo.
-
-### Estado Inicial:
-
-- Inversiones: 0
-- Fila del espacio vacío: 0
-- Paridad: 0 + 0 = 0 (par)
-
-### Estado Objetivo:
-
-- Inversiones: 0
-- Fila del espacio vacío: 0
-- Paridad: 0 + 0 = 0 (par)
-
-## Resultado de la Alcanzabilidad
-
-Las paridades coinciden (ambas son pares), por lo tanto, el estado objetivo es alcanzable desde el estado inicial.
-
-## Resolviendo el Puzzle con A*
-
-Ahora vamos a aplicar el algoritmo A* para resolver el puzzle.
-
-### Estado Inicial: [1, 0, 2, 3]
-
-Generamos los hijos:
-
-- Mover el espacio vacío (0) hacia la derecha:  
-  Nuevo estado: [1, 2, 0, 3] (no válido porque no se generará debido a las reglas).
-
-- Mover el espacio vacío (0) hacia abajo:  
-  Nuevo estado: [1, 2, 3, 0] (no válido porque no se generará debido a las reglas).
-
-### Estado Objetivo: [0, 1, 2, 3]
-
-Generamos los hijos:
-
-- Mover el espacio vacío (0) hacia la izquierda:  
-  Nuevo estado: [1, 0, 2, 3] (lo que ya tenemos).
-
-El proceso continúa hasta que se llega al estado objetivo.
-
-## Ejecución del Algoritmo
-
-Vamos a realizar los movimientos necesarios para resolver el puzzle:
-
-### Estado Inicial: [1, 0, 2, 3]
-
-Mover el espacio vacío a la derecha:  
-Nuevo estado: [0, 1, 2, 3] (Estado Objetivo).
-
-Esto nos da la solución en un solo paso.
-
-## Respuesta Final
-
-El estado objetivo es alcanzable y la solución se encuentra en 1 paso adicional, moviendo el 0 hacia la derecha para obtener [0, 1, 2, 3].
-
----
-
-Para:  
-estado inicial = [1, 2, 3, 0]  
-estado objetivo = [0, 1, 2, 3]  
-
----
-
-Vamos a analizar manualmente si el estado objetivo es alcanzable y, de ser así, cómo resolver el puzzle utilizando la heurística A* para el estado inicial [1, 2, 3, 0] y el estado objetivo [0, 1, 2, 3].
-
-## Análisis de Alcanzabilidad
-
-Primero, contemos las inversiones en los estados inicial y objetivo. Una inversión ocurre cuando un número mayor precede a un número menor en la secuencia, ignorando el 0.
-
-### Estado Inicial: [1, 2, 3, 0]
-
-1 precede a 2 (no es una inversión).  
-1 precede a 3 (no es una inversión).  
-2 precede a 3 (no es una inversión).  
-
-**Inversiones en el estado inicial: 0.**
-
-### Estado Objetivo: [0, 1, 2, 3]
-
-0 precede a 1 (ignoramos 0).  
-1 precede a 2 (no es una inversión).  
-1 precede a 3 (no es una inversión).  
-2 precede a 3 (no es una inversión).  
-
-**Inversiones en el estado objetivo: 0.**
-
-## Posición del Espacio Vacío
-
-En puzzles de tamaño par (2x2), debemos considerar la posición del espacio vacío:
-
-- En el estado inicial, el espacio vacío (0) está en la fila 1 (índice 3).
-- En el estado objetivo, el espacio vacío (0) está en la fila 0 (índice 0).
-
-Para que un estado sea alcanzable en un puzzle 2x2, la paridad (suma de inversiones y la fila del espacio vacío) debe coincidir entre los estados inicial y objetivo.
-
-### Estado Inicial:
-
-- Inversiones: 0
-- Fila del espacio vacío: 1
-- Paridad: 0 + 1 = 1 (impar)
-
-### Estado Objetivo:
-
-- Inversiones: 0
-- Fila del espacio vacío: 0
-- Paridad: 0 + 0 = 0 (par)
-
-## Resultado de la Alcanzabilidad
-
-Las paridades no coinciden (una es impar y la otra es par), por lo tanto, el estado objetivo no es alcanzable desde el estado inicial.
-
-## Respuesta Final
-
-Dado que las paridades no coinciden, el estado objetivo no es alcanzable desde el estado inicial.
+- **Distancia de Manhattan**: Suma de las distancias horizontales y verticales de cada pieza desde su posición objetivo.
+- **Número de piezas fuera de lugar**: Cuenta las piezas que no están en su posición objetivo.
 
 ---
 
