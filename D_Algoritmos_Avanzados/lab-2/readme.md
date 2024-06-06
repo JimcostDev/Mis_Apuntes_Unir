@@ -88,6 +88,14 @@ El **algoritmo A*** es un algoritmo de búsqueda y de camino óptimo que utiliza
 
 La **paridad de inversiones** es una propiedad que determina si una configuración del puzle es alcanzable desde otra. Una inversión es cuando una loseta precede a otra loseta de menor número en la secuencia del puzle (excluyendo el espacio vacío). La paridad de inversiones debe ser la misma tanto en el estado inicial como en el objetivo para que la configuración objetivo sea alcanzable.
 
+### Conclusión
+
+En la resolución de puzzles de deslizamiento:
+- **Paridad de inversiones** se usa para verificar si hay una solución posible desde una configuración inicial hasta la configuración objetivo.
+- La **heurística** (distancia de Manhattan) se utiliza para estimar cuántos movimientos adicionales se necesitan para resolver el puzzle desde un estado dado.
+- El **algoritmo A*** combina el costo acumulado de los movimientos realizados con la heurística para determinar la mejor ruta posible hacia la solución.
+
+En puzzles 2x2, estos análisis no son necesarios debido a la simplicidad y menor número de configuraciones posibles. En puzzles más grandes como los 3x3 y 4x4, estos conceptos son fundamentales para encontrar soluciones óptimas y eficaces.
 
 ---
 ## Explicación de Soluciones en Puzzles de Deslizamiento
