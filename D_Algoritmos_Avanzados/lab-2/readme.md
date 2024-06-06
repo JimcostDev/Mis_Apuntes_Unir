@@ -74,21 +74,6 @@ Esta función obtiene el tamaño del puzzle y los estados inicial y objetivo del
   - `tuple`: Tamaño del puzzle, estado inicial y estado objetivo.
 
 
----
-
-### Explicación Detallada de las Respuestas
-
-#### Configuración No Alcanzable
-
-Si la configuración objetivo no es alcanzable, se proporciona una explicación detallada de la razón:
-
-- **Paridad de Inversiones (puzzles de tamaño impar):** El número de inversiones en el estado inicial y el estado objetivo deben tener la misma paridad (ambos pares o ambos impares).
-- **Suma de Inversiones y Posición del Espacio Vacío (puzzles de tamaño par):** La suma del número de inversiones y la fila del espacio vacío (contando desde 0) debe tener la misma paridad en ambos estados (inicial y objetivo).
-
-#### No se Encontró Solución
-
-Si no se encuentra una solución, aunque el estado objetivo es alcanzable, el mensaje indicará que el algoritmo no logró encontrar la secuencia de movimientos necesaria. Esto puede deberse a limitaciones en el tiempo de ejecución o en la memoria disponibles para explorar todos los posibles estados.
-
 ## Conceptos Técnicos
 
 ### Heurística
