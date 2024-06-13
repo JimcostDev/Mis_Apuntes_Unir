@@ -1,208 +1,208 @@
 """
-Este módulo resuelve el puzle de las losetas utilizando el algoritmo A*.
-El puzle de las losetas es un juego en el que se tienen n losetas numeradas
-y un espacio vacío en una cuadrícula de nxn. El objetivo es reorganizar las
-losetas desde una configuración inicial hasta una configuración objetivo.
+This module solves the tile puzzle using the A* algorithm.
+The tile puzzle is a game where you have n numbered tiles
+and an empty space on an nxn grid. The goal is to rearrange
+the tiles from an initial configuration to a goal configuration.
 """
 import time
 from heapq import heappop, heappush
 
 class Puzzle:
-    """Clase que representa el puzle de las losetas."""
+    """Class representing the tile puzzle."""
 
-    def __init__(self, estado, objetivo, pasos=None, costo=0, tamano=4):
+    def __init__(self, state, goal, steps=None, cost=0, size=4):
         """
-        Inicializa una instancia de la clase Puzzle.
+        Initializes an instance of the Puzzle class.
 
-        Parámetros:
-        - estado (list): La configuración actual del puzle.
-        - objetivo (list): La configuración objetivo del puzle.
-        - pasos (list, optional): Lista de estados alcanzados hasta el momento. Default es None.
-        - costo (int, optional): El costo acumulado para llegar al estado actual. Default es 0.
-        - tamano (int): Tamaño del lado del puzzle (n x n).
+        Parameters:
+        - state (list): The current puzzle configuration.
+        - goal (list): The goal puzzle configuration.
+        - steps (list, optional): List of states reached so far. Default is None.
+        - cost (int, optional): The accumulated cost to reach the current state. Default is 0.
+        - size (int): Side length of the puzzle (n x n).
         """
-        self.estado = estado
-        self.objetivo = objetivo
-        self.pasos = pasos if pasos is not None else [estado]
-        self.costo = costo
-        self.tamano = tamano
+        self.state = state
+        self.goal = goal
+        self.steps = steps if steps is not None else [state]
+        self.cost = cost
+        self.size = size
 
-    def es_objetivo(self):
+    def is_goal(self):
         """
-        Verifica si el estado actual es el objetivo.
-
-        Returns:
-        bool: True si el estado actual es el objetivo, False en caso contrario.
-        """
-        return self.estado == self.objetivo
-
-    def generar_hijos(self):
-        """
-        Genera los estados hijos resultantes de cada acción.
+        Checks if the current state is the goal.
 
         Returns:
-        list: Lista de instancias Puzzle que representan los estados hijos.
+        bool: True if the current state is the goal, False otherwise.
         """
-        pos_vacio = self.estado.index(0)
-        tamano = self.tamano
-        acciones = [
-            ('arriba', pos_vacio - tamano),
-            ('abajo', pos_vacio + tamano),
-            ('izquierda', pos_vacio - 1 if pos_vacio % tamano != 0 else -1),
-            ('derecha', pos_vacio + 1 if pos_vacio % tamano != tamano - 1 else -1)
+        return self.state == self.goal
+
+    def generate_children(self):
+        """
+        Generates child states resulting from each action.
+
+        Returns:
+        list: List of Puzzle instances representing the child states.
+        """
+        empty_pos = self.state.index(0)
+        size = self.size
+        actions = [
+            ('up', empty_pos - size),
+            ('down', empty_pos + size),
+            ('left', empty_pos - 1 if empty_pos % size != 0 else -1),
+            ('right', empty_pos + 1 if empty_pos % size != size - 1 else -1)
         ]
-        hijos = []
-        for _, nueva_pos in acciones:
-            if 0 <= nueva_pos < len(self.estado) and abs(nueva_pos % tamano - pos_vacio % tamano) <= 1:
-                nuevo_estado = self.estado.copy()
-                nuevo_estado[pos_vacio], nuevo_estado[nueva_pos] = nuevo_estado[nueva_pos], nuevo_estado[pos_vacio]
-                nuevo_pasos = self.pasos + [nuevo_estado]
-                nuevo_costo = self.costo + 1
-                hijos.append(Puzzle(nuevo_estado, self.objetivo, nuevo_pasos, nuevo_costo, tamano))
-        return hijos
+        children = []
+        for _, new_pos in actions:
+            if 0 <= new_pos < len(self.state) and abs(new_pos % size - empty_pos % size) <= 1:
+                new_state = self.state.copy()
+                new_state[empty_pos], new_state[new_pos] = new_state[new_pos], new_state[empty_pos]
+                new_steps = self.steps + [new_state]
+                new_cost = self.cost + 1
+                children.append(Puzzle(new_state, self.goal, new_steps, new_cost, size))
+        return children
 
-    def heuristica(self):
+    def heuristic(self):
         """
-        Calcula la heurística utilizando la distancia de Manhattan.
+        Calculates the heuristic using the Manhattan distance.
 
         Returns:
-        int: El valor de la heurística.
+        int: The heuristic value.
         """
-        tamano = self.tamano
+        size = self.size
         return sum(
-            abs(i // tamano - self.estado.index(i) // tamano) +
-            abs(i % tamano - self.estado.index(i) % tamano)
-            for i in range(1, tamano * tamano)
+            abs(i // size - self.state.index(i) // size) +
+            abs(i % size - self.state.index(i) % size)
+            for i in range(1, size * size)
         )
 
-    def costo_total(self):
+    def total_cost(self):
         """
-        Calcula el costo total como la suma de la heurística y el costo acumulado.
+        Calculates the total cost as the sum of the heuristic and the accumulated cost.
 
         Returns:
-        int: El costo total.
+        int: The total cost.
         """
-        return self.heuristica() + self.costo
+        return self.heuristic() + self.cost
 
     def __lt__(self, other):
         """
-        Define la comparación menor que (<) entre instancias de Puzzle.
+        Defines the less than (<) comparison between Puzzle instances.
 
-        Parámetros:
-        - other (Puzzle): Otra instancia de Puzzle para comparar.
+        Parameters:
+        - other (Puzzle): Another instance of Puzzle to compare.
 
         Returns:
-        bool: True si el costo total de self es menor que el de other, False en caso contrario.
+        bool: True if the total cost of self is less than that of other, False otherwise.
         """
-        return self.costo_total() < other.costo_total()
+        return self.total_cost() < other.total_cost()
 
 
-def contar_inversiones(lista):
+def count_inversions(lst):
     """
-    Cuenta el número de inversiones en la lista.
+    Counts the number of inversions in the list.
 
-    Parámetros:
-    - lista (list): Lista de números para contar las inversiones.
+    Parameters:
+    - lst (list): List of numbers to count inversions.
 
     Returns:
-    int: El número de inversiones.
+    int: The number of inversions.
     """
-    inversiones = 0
-    for i in range(len(lista) - 1):
-        for j in range(i + 1, len(lista)):
-            if lista[i] > lista[j] and lista[i] != 0 and lista[j] != 0:
-                inversiones += 1
-    return inversiones
+    inversions = 0
+    for i in range(len(lst) - 1):
+        for j in range(i + 1, len(lst)):
+            if lst[i] > lst[j] and lst[i] != 0 and lst[j] != 0:
+                inversions += 1
+    return inversions
 
-def es_alcanzable(estado_inicial, estado_objetivo, tamano):
+def is_solvable(initial_state, goal_state, size):
     """
-    Verifica si la configuración objetivo es alcanzable.
+    Checks if the goal configuration is reachable.
 
-    Parámetros:
-    - estado_inicial (list): La configuración inicial del puzle.
-    - estado_objetivo (list): La configuración objetivo del puzle.
-    - tamano (int): Tamaño del lado del puzzle (n x n).
+    Parameters:
+    - initial_state (list): The initial puzzle configuration.
+    - goal_state (list): The goal puzzle configuration.
+    - size (int): Side length of the puzzle (n x n).
 
     Returns:
-    bool: True si la configuración objetivo es alcanzable, False en caso contrario.
-    str: Razón detallada si la configuración no es alcanzable.
+    bool: True if the goal configuration is reachable, False otherwise.
+    str: Detailed reason if the configuration is not reachable.
     """
-    inversions_inicial = contar_inversiones(estado_inicial)
-    inversions_objetivo = contar_inversiones(estado_objetivo)
-    pos_vacio_inicial = estado_inicial.index(0) // tamano
-    pos_vacio_objetivo = estado_objetivo.index(0) // tamano
+    initial_inversions = count_inversions(initial_state)
+    goal_inversions = count_inversions(goal_state)
+    empty_pos_initial = initial_state.index(0) // size
+    empty_pos_goal = goal_state.index(0) // size
 
-    if tamano % 2 == 1:
-        alcanzable = inversions_inicial % 2 == inversions_objetivo % 2
+    if size % 2 == 1:
+        solvable = initial_inversions % 2 == goal_inversions % 2
     else:
-        alcanzable = (inversions_inicial + pos_vacio_inicial) % 2 == (inversions_objetivo + pos_vacio_objetivo) % 2
+        solvable = (initial_inversions + empty_pos_initial) % 2 == (goal_inversions + empty_pos_goal) % 2
 
-    if alcanzable:
-        razon = "Ambos tienen la misma paridad en la suma de inversiones y posición del espacio vacío."
+    if solvable:
+        reason = "Both have the same parity in the sum of inversions and empty space position."
     else:
-        if tamano % 2 == 1:
-            razon = "Ambos tienen distinta paridad en la suma de inversiones."
+        if size % 2 == 1:
+            reason = "Both have different parity in the sum of inversions."
         else:
-            razon = "La suma de inversiones y la posición del espacio vacío tienen distinta paridad."
-    return alcanzable, razon
+            reason = "The sum of inversions and the empty space position have different parity."
+    return solvable, reason
 
 
-def resolver_puzzle(estado_inicial, estado_objetivo, tamano):
+def solve_puzzle(initial_state, goal_state, size):
     """
-    Resuelve el puzle de las losetas utilizando el algoritmo A*.
+    Solves the tile puzzle using the A* algorithm.
 
-    Parámetros:
-    - estado_inicial (list): La configuración inicial del puzle.
-    - estado_objetivo (list): La configuración objetivo del puzle.
-    - tamano (int): Tamaño del lado del puzzle (n x n).
+    Parameters:
+    - initial_state (list): The initial puzzle configuration.
+    - goal_state (list): The goal puzzle configuration.
+    - size (int): Side length of the puzzle (n x n).
 
     Returns:
-    str: Mensaje indicando si se encontró o no una solución.
+    str: Message indicating whether a solution was found or not.
     """
-    alcanzable, razon = es_alcanzable(estado_inicial, estado_objetivo, tamano)
-    if not alcanzable:
-        return f"La configuración objetivo no es alcanzable. Razón: {razon}"
+    solvable, reason = is_solvable(initial_state, goal_state, size)
+    if not solvable:
+        return f"The goal configuration is not reachable. Reason: {reason}"
 
-    puzzle_inicial = Puzzle(estado_inicial, estado_objetivo, tamano=tamano)
-    estados_visitados = set()
-    nodos_a_explorar = [puzzle_inicial]
-    tiempo_inicio = time.time()
+    initial_puzzle = Puzzle(initial_state, goal_state, size=size)
+    visited_states = set()
+    nodes_to_explore = [initial_puzzle]
+    start_time = time.time()
 
-    while nodos_a_explorar:
-        nodo_actual = heappop(nodos_a_explorar)
-        if nodo_actual.es_objetivo():
-            tiempo_fin = time.time()
-            tiempo_ejecucion = tiempo_fin - tiempo_inicio
-            for paso, disposicion in enumerate(nodo_actual.pasos):
-                print(f"Paso {paso + 1}: {disposicion}")
-            return f"Tiempo de ejecución: {tiempo_ejecucion} segundos"
+    while nodes_to_explore:
+        current_node = heappop(nodes_to_explore)
+        if current_node.is_goal():
+            end_time = time.time()
+            execution_time = end_time - start_time
+            for step, arrangement in enumerate(current_node.steps):
+                print(f"Step {step + 1}: {arrangement}")
+            return f"Execution time: {execution_time} seconds"
 
-        estados_visitados.add(tuple(nodo_actual.estado))
-        hijos = nodo_actual.generar_hijos()
-        hijos_no_visitados = [hijo for hijo in hijos if tuple(hijo.estado) not in estados_visitados]
+        visited_states.add(tuple(current_node.state))
+        children = current_node.generate_children()
+        unvisited_children = [child for child in children if tuple(child.state) not in visited_states]
 
-        for hijo in hijos_no_visitados:
-            heappush(nodos_a_explorar, hijo)
+        for child in unvisited_children:
+            heappush(nodes_to_explore, child)
 
-    return "No se encontró solución"
+    return "No solution found"
 
 
-def obtener_entrada_usuario():
+def get_user_input():
     """
-    Obtiene el tamaño del puzzle y los estados inicial y objetivo del usuario.
+    Gets the puzzle size and the initial and goal states from the user.
 
     Returns:
-    tuple: Tamaño del puzzle, estado inicial y estado objetivo.
+    tuple: Puzzle size, initial state, and goal state.
     """
-    tamano = int(input("Ingrese el tamaño del lado del puzzle (por ejemplo, 3 para un puzzle de 3x3): "))
-    print(f"Ingrese el estado inicial del puzzle ({tamano * tamano} números, separados por espacios, con 0 representando el espacio vacío):")
-    estado_inicial = list(map(int, input().split()))
-    print(f"Ingrese el estado objetivo del puzzle ({tamano * tamano} números, separados por espacios, con 0 representando el espacio vacío):")
-    estado_objetivo = list(map(int, input().split()))
-    return tamano, estado_inicial, estado_objetivo
+    size = int(input("Enter the side length of the puzzle (e.g., 3 for a 3x3 puzzle): "))
+    print(f"Enter the initial state of the puzzle ({size * size} numbers, separated by spaces, with 0 representing the empty space):")
+    initial_state = list(map(int, input().split()))
+    print(f"Enter the goal state of the puzzle ({size * size} numbers, separated by spaces, with 0 representing the empty space):")
+    goal_state = list(map(int, input().split()))
+    return size, initial_state, goal_state
 
 
 if __name__ == "__main__":
-    TAMANO, ESTADO_INICIAL, ESTADO_OBJETIVO = obtener_entrada_usuario()
-    RESULTADO = resolver_puzzle(ESTADO_INICIAL, ESTADO_OBJETIVO, TAMANO)
-    print(RESULTADO)
+    SIZE, INITIAL_STATE, GOAL_STATE = get_user_input()
+    RESULT = solve_puzzle(INITIAL_STATE, GOAL_STATE, SIZE)
+    print(RESULT)
