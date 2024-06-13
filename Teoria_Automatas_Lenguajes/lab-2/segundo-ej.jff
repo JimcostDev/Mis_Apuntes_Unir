@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--Created with JFLAP 7.1-->
+<structure>
+    <type>pda</type>
+    <automaton>
+        <!--The list of states.-->
+        <state id="0" name="q0">
+            <x>164.0</x>
+            <y>233.0</y>
+            <initial/>
+        </state>
+        <state id="1" name="q1">
+            <x>321.0</x>
+            <y>230.0</y>
+        </state>
+        <state id="2" name="q2">
+            <x>712.0</x>
+            <y>228.0</y>
+            <final/>
+        </state>
+        <state id="3" name="q3">
+            <x>449.0</x>
+            <y>230.0</y>
+        </state>
+        <!--The list of transitions.-->
+        <!-- Pushing two '1' for each 'y' -->
+        <transition>
+            <from>0</from>
+            <to>0</to>
+            <read>y</read>
+            <pop>Z</pop>
+            <push>11Z</push>
+        </transition>
+        <transition>
+            <from>0</from>
+            <to>0</to>
+            <read>y</read>
+            <pop>1</pop>
+            <push>111</push>
+        </transition>
+        <transition>
+            <from>0</from>
+            <to>1</to>
+            <read>x</read>
+            <pop>1</pop>
+            <push/>
+        </transition>
+        <!-- Processing 'x' and popping '1' -->
+        <transition>
+            <from>1</from>
+            <to>1</to>
+            <read>x</read>
+            <pop>1</pop>
+            <push/>
+        </transition>
+        <!-- Moving to acceptance state if only 'Z' remains -->
+        <transition>
+            <from>1</from>
+            <to>2</to>
+            <read/>
+            <pop>Z</pop>
+            <push/>
+        </transition>
+    </automaton>
+</structure>
