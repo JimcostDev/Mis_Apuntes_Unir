@@ -5,7 +5,7 @@
 
 Bienvenido a este repositorio. Aquí encontrarás una recopilación de apuntes, trabajos, laboratorios y actividades que he ido realizando durante mis estudios del Grado en Ingeniería Informática en la **Universidad Internacional de La Rioja (UNIR)**.
 
-!Si te resulta útil este proyecto, apóyalo con una ⭐! Tu apoyo nos motiva a crear más contenido y mejorar los recursos disponibles. ¡Gracias! :octocat:
+> !Si te resulta útil este proyecto, apóyalo con una ⭐! Tu apoyo nos motiva a crear más contenido y mejorar los recursos disponibles. ¡Gracias! :octocat:
 
 Este material está pensado para servir de apoyo a otros estudiantes y profesionales interesados en profundizar en los temas tratados en el grado.
 
