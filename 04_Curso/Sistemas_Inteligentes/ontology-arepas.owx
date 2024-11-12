@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/arepas/ontologies/2024/5/arepas"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/bcgomez/ontologies/2024/5/ontologia-arepas">
+    <Prefix name="" IRI="http://www.semanticweb.org/bcgomez/ontologies/2024/5/ontologia-arepas#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+
+    <!-- Declaraciones de clases -->
+    <Declaration>
+        <Class IRI="#Arepa"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ingrediente"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProcesoPreparacion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Herramienta"/>
+    </Declaration>
+
+    <!-- Declaraciones de propiedades de objeto -->
+    <Declaration>
+        <ObjectProperty IRI="#contiene_ingrediente"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#requiere_proceso"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#requiere_herramienta"/>
+    </Declaration>
+
+    <!-- Declaraciones de propiedades de datos -->
+    <Declaration>
+        <DataProperty IRI="#nombre"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#cantidad"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#tiempo_preparacion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#temperatura"/>
+    </Declaration>
+
+    <!-- Definición de las propiedades de objeto -->
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#contiene_ingrediente"/>
+        <Class IRI="#Arepa"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#contiene_ingrediente"/>
+        <Class IRI="#Ingrediente"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#requiere_proceso"/>
+        <Class IRI="#Arepa"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#requiere_proceso"/>
+        <Class IRI="#ProcesoPreparacion"/>
+    </ObjectPropertyRange>
+
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#requiere_herramienta"/>
+        <Class IRI="#ProcesoPreparacion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#requiere_herramienta"/>
+        <Class IRI="#Herramienta"/>
+    </ObjectPropertyRange>
+
+    <!-- Definición de las propiedades de datos -->
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombre"/>
+        <Class IRI="#Arepa"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombre"/>
+        <Class IRI="#Ingrediente"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombre"/>
+        <Class IRI="#ProcesoPreparacion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombre"/>
+        <Class IRI="#Herramienta"/>
+    </DataPropertyDomain>
+
+    <DataPropertyDomain>
+        <DataProperty IRI="#cantidad"/>
+        <Class IRI="#Ingrediente"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#tiempo_preparacion"/>
+        <Class IRI="#ProcesoPreparacion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#temperatura"/>
+        <Class IRI="#ProcesoPreparacion"/>
+    </DataPropertyDomain>
+
+    <DataPropertyRange>
+        <DataProperty IRI="#nombre"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#cantidad"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#tiempo_preparacion"/>
+        <Datatype abbreviatedIRI="xsd:duration"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#temperatura"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+
+    <!-- Declaraciones de individuos -->
+    <Declaration>
+        <NamedIndividual IRI="#Arepa_de_Maiz"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Arepa_de_Queso"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Masa"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Queso"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sal"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Asar"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Amasar"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sartén"/>
+    </Declaration>
+
+    <!-- Aserciones de clase -->
+    <ClassAssertion>
+        <Class IRI="#Arepa"/>
+        <NamedIndividual IRI="#Arepa_de_Maiz"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Arepa"/>
+        <NamedIndividual IRI="#Arepa_de_Queso"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Ingrediente"/>
+        <NamedIndividual IRI="#Masa"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Ingrediente"/>
+        <NamedIndividual IRI="#Queso"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Ingrediente"/>
+        <NamedIndividual IRI="#Sal"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ProcesoPreparacion"/>
+        <NamedIndividual IRI="#Asar"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ProcesoPreparacion"/>
+        <NamedIndividual IRI="#Amasar"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Herramienta"/>
+        <NamedIndividual IRI="#Sartén"/>
+    </ClassAssertion>
+
+    <!-- Aserciones de propiedades de objeto -->
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#contiene_ingrediente"/>
+        <NamedIndividual IRI="#Arepa_de_Maiz"/>
+        <NamedIndividual IRI="#Masa"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#contiene_ingrediente"/>
+        <NamedIndividual IRI="#Arepa_de_Queso"/>
+        <NamedIndividual IRI="#Masa"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#contiene_ingrediente"/>
+        <NamedIndividual IRI="#Arepa_de_Queso"/>
+        <NamedIndividual IRI="#Queso"/>
+    </ObjectPropertyAssertion>
+
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#requiere_proceso"/>
+        <NamedIndividual IRI="#Arepa_de_Maiz"/>
+        <NamedIndividual IRI="#Amasar"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#requiere_proceso"/>
+        <NamedIndividual IRI="#Arepa_de_Maiz"/>
+        <NamedIndividual IRI="#Asar"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#requiere_herramienta"/>
+        <NamedIndividual IRI="#Asar"/>
+        <NamedIndividual IRI="#Sartén"/>
+    </ObjectPropertyAssertion>
+
+    <!-- Aserciones de propiedades de datos -->
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombre"/>
+        <NamedIndividual IRI="#Arepa_de_Maiz"/>
+        <Literal>Arepa de Maíz</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombre"/>
+        <NamedIndividual IRI="#Arepa_de_Queso"/>
+        <Literal>Arepa de Queso</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#cantidad"/>
+        <NamedIndividual IRI="#Masa"/>
+        <Literal datatypeIRI="xsd:float">500.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombre"/>
+        <NamedIndividual IRI="#Sartén"/>
+        <Literal>Sartén</Literal>
+    </DataPropertyAssertion>
+</Ontology>
