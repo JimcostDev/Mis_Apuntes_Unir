@@ -89,3 +89,5 @@ plt.xlabel('Estación (1:invierno, 2:primavera, 3:verano, 4:otoño)')
 plt.ylabel('cnt')
 plt.tight_layout()
 plt.show()
+
+# contacto: jimcostdev.com 
