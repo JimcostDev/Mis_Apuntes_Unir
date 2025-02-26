@@ -72,12 +72,52 @@ plt.ylabel('Frecuencia')
 plt.tight_layout()
 plt.show()
 
+# 7. Graficos adicionales
 # Relación entre temperatura y cnt (variable 'temp')
 plt.figure(figsize=(8, 5))
 sns.scatterplot(x='temp', y='cnt', data=df)
 plt.title('Relación entre Temperatura y cnt')
 plt.xlabel('Temperatura (normalizada)')
 plt.ylabel('cnt')
+plt.tight_layout()
+plt.show()
+
+# Tendencia del número de alquileres a lo largo del tiempo
+plt.figure(figsize=(12, 6))
+df_sorted = df.sort_values(by='dteday')  # Ordenar por fecha
+sns.lineplot(x=df_sorted['dteday'], y=df_sorted['cnt'])
+plt.xticks(rotation=45)
+plt.title('Tendencia del Número de Alquileres a lo Largo del Tiempo')
+plt.xlabel('Fecha')
+plt.ylabel('Número de alquileres')
+plt.tight_layout()
+plt.show()
+
+# Análisis de cnt por día de la semana y hora del día
+plt.figure(figsize=(8, 5))
+sns.boxplot(x='weekday', y='cnt', data=df)
+plt.title('Distribución de cnt por Día de la Semana')
+plt.xlabel('Día de la Semana (0: Domingo, ..., 6: Sábado)')
+plt.ylabel('Número de Alquileres')
+plt.tight_layout()
+plt.show()
+
+# Promedio de alquileres por hora del día
+plt.figure(figsize=(10, 5))
+sns.lineplot(x='hr', y='cnt', data=df, estimator='mean')
+plt.title('Promedio de Alquileres por Hora del Día')
+plt.xlabel('Hora del Día')
+plt.ylabel('Promedio de Alquileres')
+plt.xticks(range(0, 24))
+plt.tight_layout()
+plt.show()
+
+# Efecto del clima en el número de alquileres
+plt.figure(figsize=(8, 5))
+sns.boxplot(x='weathersit', y='cnt', data=df)
+plt.title('Efecto del Clima en el Número de Alquileres')
+plt.xlabel('Condición Climática (1: despejado, 2: nublado, 3: lluvia ligera, 4: lluvia fuerte)')
+plt.ylabel('Número de Alquileres')
 plt.tight_layout()
 plt.show()
 
@@ -89,5 +129,3 @@ plt.xlabel('Estación (1:invierno, 2:primavera, 3:verano, 4:otoño)')
 plt.ylabel('cnt')
 plt.tight_layout()
 plt.show()
-
-# contacto: jimcostdev.com 
