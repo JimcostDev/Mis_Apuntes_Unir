@@ -1,5 +1,7 @@
 # Mineria de Texto y PLN
 
+### Integrantes: Ronaldo Jímenez y Bárbara Gómez
+
 Este proyecto implementa tecnicas de mineria de texto y procesamiento de lenguaje natural (PLN) aplicadas a cuatro libros del Proyecto Gutenberg: **Moby Dick**, **Orgullo y Prejuicio**, **Sherlock Holmes** y **Historia de dos ciudades**. El laboratorio extrae los 15 terminos mas frecuentes, genera nubes de palabras, calcula el indice TF-IDF y obtiene asociaciones (bigramas) para analizar la relevancia y el contexto de los terminos en cada obra.
 
 ## Dependencias
