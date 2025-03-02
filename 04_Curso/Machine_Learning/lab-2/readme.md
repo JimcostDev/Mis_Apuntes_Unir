@@ -9,6 +9,8 @@ El laboratorio demuestra el uso de técnicas básicas de machine learning para t
 continua en categórica y entrenar un modelo de árbol de decisión. La evaluación inicial muestra resultados
 que pueden mejorarse mediante técnicas adicionales de ajuste de parámetros y validación.
 
+![img-tree](./arbol-decisión.png)
+
 ## Descripción
 
 El proyecto sigue los siguientes pasos:
