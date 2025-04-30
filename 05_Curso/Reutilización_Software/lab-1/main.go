@@ -1,5 +1,7 @@
 package main
 
+// Para probar el código, puedes usar el Go Playground en esta dirección: https://go.dev/play/
+
 import (
 	"fmt"
 	"strings"
