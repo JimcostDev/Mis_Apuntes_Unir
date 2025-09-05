@@ -57,7 +57,7 @@ También conocido como FCFS (First Come, First Served). Los procesos se ejecutan
 
 #### 💻 Código Fuente (FIFO)
 
-* **Python:** [algoritmo_planificacion_fifo.py](https://github.com/JimcostDev/python_programming_fundamentals/tree/master/exercises/alg-planif-proc)
+* **Python:** [fifo_yt.py](https://github.com/JimcostDev/python_programming_fundamentals/blob/master/exercises/alg-planif-proc/fifo_yt.py)
 * **Java:** [Main.java](https://github.com/Leila-Bula/algoritmo-planificacion-fcfs/blob/master/src/main/java/Main.java)
 * **Resultados PDF:** [fcfs.pdf](https://github.com/JimcostDev/Mis_Apuntes_Unir/blob/master/01_Curso/S.O/llamadas%20al%20sistema/fcfs.pdf)
 
@@ -94,7 +94,7 @@ Los procesos se ejecutan según un valor de prioridad asignado. En este ejemplo,
 
 #### 💻 Código Fuente (Prioridades)
 
-* **Python:** [algoritmo_planificacion_x_prioridades.py](https://github.com/JimcostDev/python_programming_fundamentals/tree/master/exercises/alg-planif-proc)
+* **Python:** [prioridades_yt.py](https://github.com/JimcostDev/python_programming_fundamentals/tree/master/exercises/alg-planif-proc/prioridades_yt.py)
 
 ### 3. Algoritmo de Planificación Round Robin (RR)
 
@@ -121,7 +121,7 @@ Algoritmo de planificación preventivo que asigna a cada proceso una porción de
 
 #### 💻 Código Fuente y Video (Round Robin)
 
-* **Python:** [round_robin.py](https://github.com/JimcostDev/python_programming_fundamentals/tree/master/exercises/alg-planif-proc)
+* **Python:** [round_robin.py](https://github.com/JimcostDev/python_programming_fundamentals/tree/master/exercises/alg-planif-proc/round_robin_yt.py)
 * **Video Complementario:** [🔁 Round Robin en Python y Java: Implementación Práctica para Sistemas Operativos 🖥️](https://youtu.be/xVzgQukMcVE)
 
 ---
